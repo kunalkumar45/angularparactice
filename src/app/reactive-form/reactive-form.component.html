@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="row my-5">
+    <div class="col-8">
+      <form class="row g-3" [formGroup]="stuObj">
+        <div class="col-md-4">
+          <label class="form-label">First name</label>
+          <input
+            type="text"
+            name="firstName"
+            class="form-control"
+            formControlName="fName"
+          />
+          <div class="text-danger">
+            @if ((stuObj.controls['fName'].touched ||
+            stuObj.controls['fName'].dirty) &&
+            stuObj.controls['fName'].errors?.['required']) {
+            <span> This is Required</span>
+            } @else if((stuObj.controls['fName'].touched ||
+            stuObj.controls['fName'].dirty) &&
+            stuObj.controls['fName'].errors?.['minlength']) {
+            <span> Min char 3 required</span>
+            }
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Last name</label>
+          <input
+            type="text"
+            name="lastName"
+            class="form-control"
+            formControlName="lName"
+          />
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Username</label>
+          <div class="input-group">
+            <span class="input-group-text"><span>&#64;</span> </span>
+            <input
+              type="text"
+              name="userName"
+              class="form-control"
+              formControlName="userName"
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">City</label>
+          <input type="text" name="city" class="form-control" />
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">State</label>
+          <select class="form-select" name="state" formControlName="state">
+            <option selected disabled value="">Choose...</option>
+            <option>Mahashtra</option>
+            <option>Goa</option>
+            <option>Punjab</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Zip</label>
+          <input
+            type="text"
+            name="zipCode"
+            required
+            class="form-control"
+            formControlName="zipCode"
+          />
+        </div>
+        <div class="col-12">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              name="isAcceptTerms"
+              type="checkbox"
+              formControlName="isAcceptTerms"
+            />
+            <label class="form-check-label" for="invalidCheck">
+              Agree to terms and conditions
+            </label>
+          </div>
+        </div>
+        <div class="col-12">
+          <button
+            class="btn btn-primary mx-2"
+            type="button"
+            (click)="onSubmit()"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

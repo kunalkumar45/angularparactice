@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="row pt-4">
+    <div class="col-8">
+      <div class="card">
+        <div class="card-header bg-primary text-white">Employee List</div>
+        <div class="card-body">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>S NO.</th>
+                <th>Name</th>
+                <th>Salary</th>
+                <th>Age</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (item of empList; track item.id) {
+              <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.employee_name }}</td>
+                <td>{{ item.employee_salary }}</td>
+                <td>{{ item.employee_age }}</td>
+                <td>
+                  <button class="btn btn-primary mx-2" (click)="onEdit(item)">
+                    Edit
+                  </button>
+                  <button
+                    class="btn btn-primary mx-2"
+                    (click)="onDelete(item.id)"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header bg-primary text-white">Add New Employee</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <label for=""> Name</label>
+              <input
+                class="form-control"
+                type="text"
+                [(ngModel)]="empObj.name"
+                required
+              />
+            </div>
+            <div class="col-12">
+              <label for="">Salary</label>
+              <input
+                class="form-control"
+                type="text"
+                [(ngModel)]="empObj.salary"
+                required
+              />
+            </div>
+            <div class="col-12">
+              <label for="">Age</label>
+              <input
+                class="form-control"
+                type="text"
+                [(ngModel)]="empObj.age"
+                required
+              />
+            </div>
+          </div>
+          <div class="row pt-2">
+            <div class="col-6">
+              <button type="button" class="btn btn-secondary">Reset</button>
+            </div>
+            <div class="col-6">
+              <button type="button" class="btn btn-success" (click)="onSave()">
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
