@@ -82,6 +82,16 @@
               </button>
             </div>
           </div>
+          <div class="row">
+            <div class="col-4">
+              @for (item of empObj; track $index) {
+              <li>
+                {{ item.salary }}
+              </li>
+              <li>{{ item.age }}</li>
+              }
+            </div>
+          </div>
         </div>
       </div>
     </div>
